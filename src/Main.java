@@ -29,7 +29,8 @@ public class Main {
 				} else {
 					System.out.println("Vehicle " + (j + 1) + " gets priority");
 				}
-				System.out.println("v1 lostPrivacy: " + vehicles.get(i).lostPrivacy + " v2 lostPrivacy: " + vehicles.get(j).lostPrivacy);
+				System.out.println("v1 lostPrivacy: " + vehicles.get(i).lostPrivacy + " v2 lostPrivacy: "
+						+ vehicles.get(j).lostPrivacy);
 				vehicles.get(i).clear();
 				vehicles.get(j).clear();
 				System.out.println();
@@ -38,37 +39,45 @@ public class Main {
 	}
 
 	public static int makeNegotiation(Vehicle v1, Vehicle v2) {
-		// Auction
-		double oldUtility1 = 0, oldUtility2 = 0;
+		// turn based negotiation
 		double utility1 = 0, utility2 = 0;
-		System.out.println("Turn " + 1);
+		System.out.println("Vehicle " + 1);
 		utility1 += v1.makeOffer();
+		System.out.println("Vehicle " + 2);
+		utility2 += v2.makeOffer();
 		System.out.println(" V1: " + utility1 + " V2: " + utility2);
-		int turn = 2, count = 0;
-		while (++count < 15) {
-			System.out.println("Turn " + turn);
-			if (turn == 1) {
-				oldUtility1 = utility1;
-				utility1 += v1.makeOffer();
-				System.out.println(" V1: " + utility1 + " V2: " + utility2);
-				if (utility1 > utility2)
-					turn = 2;
-				if (utility1 - oldUtility1 < 0.00001)
-					break;
-			} else {
-				oldUtility2 = utility2;
-				utility2 += v2.makeOffer();
-				System.out.println(" V1: " + utility1 + " V2: " + utility2);
-				if (utility1 < utility2)
-					turn = 1;
-				if (utility2 - oldUtility2 < 0.00001)
-					break;
-			}
+		if (utility1 > utility2) {
+			return 1;
+		} else if (utility1 < utility2) {
+			return 2;
 		}
+		System.out.println("Vehicle " + 1);
+		utility1 += v1.makeOffer();
+		System.out.println("Vehicle " + 2);
+		utility2 += v2.makeOffer();
+		if (utility1 > utility2) {
+			return 1;
+		} else if (utility1 < utility2) {
+			return 2;
+		}
+		System.out.println("Vehicle " + 1);
+		utility1 += v1.makeOffer();
+		System.out.println("Vehicle " + 2);
+		utility2 += v2.makeOffer();
+		if (utility1 > utility2) {
+			return 1;
+		} else if (utility1 < utility2) {
+			return 2;
+		}
+		System.out.println("Vehicle " + 1);
+		utility1 += v1.makeOffer();
+		System.out.println("Vehicle " + 2);
+		utility2 += v2.makeOffer();
 		if (utility1 >= utility2) {
 			return 1;
 		} else {
 			return 2;
 		}
+
 	}
 }
