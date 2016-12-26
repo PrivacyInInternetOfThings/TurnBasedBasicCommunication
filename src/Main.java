@@ -43,9 +43,11 @@ public class Main {
 					System.out.println("Vehicle " + (j + 1) + " gets priority");
 				}
 				System.out.println("v1 lostPrivacy: " + formatter.format(vehicles.get(i).lostPrivacy) + "/"
-						+ formatter.format(vehicles.get(i).totalPrivacy) + " v2 lostPrivacy: "
-						+ formatter.format(vehicles.get(j).lostPrivacy) + "/"
-						+ formatter.format(vehicles.get(j).totalPrivacy));
+						+ formatter.format(vehicles.get(i).totalPrivacy) + " "
+						+ formatter.format(100*vehicles.get(i).lostPrivacy / vehicles.get(i).totalPrivacy) + "%"
+						+ " v2 lostPrivacy: " + formatter.format(vehicles.get(j).lostPrivacy) + "/"
+						+ formatter.format(vehicles.get(j).totalPrivacy) + " "
+						+ formatter.format(100*vehicles.get(j).lostPrivacy / vehicles.get(j).totalPrivacy) + "%");
 				vehicles.get(i).clear();
 				vehicles.get(j).clear();
 				System.out.println();System.out.println();
