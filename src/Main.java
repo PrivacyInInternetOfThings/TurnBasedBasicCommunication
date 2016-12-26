@@ -14,6 +14,13 @@ public class Main {
 		Vehicle v4 = new Vehicle(VEHICLETYPE.ORDINARY, EMERGENCYTYPE.LATEFORWORK, MALFUNCTIONTYPE.NOMALFUNCTION, 1);
 		Vehicle v5 = new Vehicle(VEHICLETYPE.ORDINARY, EMERGENCYTYPE.LATEFORSCHOOL, MALFUNCTIONTYPE.NOMALFUNCTION, 14);
 
+		v1.setPrivacy(0.0445, 0.115, 0.01575, 0.1755);
+		v2.setPrivacy(0.1875, 0.243, 0.029, 0.174);
+		v3.setPrivacy(0.25, 0.25, 0.25, 0.25);
+		v4.setPrivacy(0.094, 0.19, 0.18, 0.17);
+		v5.setPrivacy(0.171, 0.066, 0.22, 0.174);
+		
+		
 		ArrayList<Vehicle> vehicles = new ArrayList<>();
 		vehicles.add(v1);
 		vehicles.add(v2);
@@ -29,8 +36,8 @@ public class Main {
 				} else {
 					System.out.println("Vehicle " + (j + 1) + " gets priority");
 				}
-				System.out.println("v1 lostPrivacy: " + vehicles.get(i).lostPrivacy + " v2 lostPrivacy: "
-						+ vehicles.get(j).lostPrivacy);
+				System.out.println("v1 lostPrivacy: " + vehicles.get(i).lostPrivacy+"/"+vehicles.get(i).totalPrivacy + " v2 lostPrivacy: "
+						+ vehicles.get(j).lostPrivacy+"/"+vehicles.get(j).totalPrivacy );
 				vehicles.get(i).clear();
 				vehicles.get(j).clear();
 				System.out.println();
